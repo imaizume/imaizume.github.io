@@ -22,8 +22,16 @@
       max-width: 960px;
       margin: 0 auto;
     }
+    h1 {
+      font-size: 4rem;
+    }
+    h1:before {
+      content: '@'
+    }
     h2 {
+      display: inline-block;
       font-size: 2rem;
+      margin: 0 auto;
     }
     .header-icon {
       max-width: 200px;
@@ -32,7 +40,7 @@
       padding: 2rem 0;
     }
     .contact-icon {
-      width: 10rem;
+      width: 8rem;
     }
     .contact-list {
       list-style: none;
@@ -56,12 +64,13 @@
     <section class="area">
       <div style="width: 100%; text-align: center;">
         <img src="./img/icon.png" alt="imaizume icon" class="header-icon">
+        <h1>imaizume</h1>
       </div>
     </section>
 
     <section class="area">
       <div style="text-align: center;">
-        <h2 style="display: inline-block; margin: 0 auto;">Contact</h2>
+        <h2>Contact</h2>
       </div>
       <div>
         <ul class="contact-list">
