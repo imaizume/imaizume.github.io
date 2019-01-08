@@ -3,32 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <title>imaizume's profile</title>
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
   <style>
+    html {
+      font-size: 16px;
+    }
+
     body {
       background-color: #eee;
+      font-family: 'Noto Sans JP', sans-serif;
+      margin: 0;
+      width: 100%;
+    }
+    .circle {
+      border-radius: 50%;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2rem;
+    }
+    .header-icon {
+      max-width: 200px;
+    }
+    .area {
+      padding: 2rem 0;
+    }
+    .contact-icon {
+      width: 10rem;
+    }
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-evenly;
+      padding: 0;
+      li {
+        display: inline-block;
+      }
+      .qiita {
+        border: 2px solid #5a8d4e;
+        box-sizing: border-box;
+      }
     }
   </style>
 </head>
-<body style="width: 100%;margin: 0;">
-  <div style="max-width: 960px; margin: 0 auto;">
-  	<section>
-  		<div style="width: 100%; text-align: center;">
-  			<img src="./img/icon.png" alt="imaizume icon" style="max-width: 300px;">
-  		</div>
-  	</section>
-  	<section>
-    <ul style="list-style: none; display: flex; flex-flow: row; justify-content: space-between; padding: 0">
-      <li style="display: inline-block;">
-        <a href="https://twitter.com/imaizume" alt="Twitter" style="display: inline-block;"><img src="./img/twitter.png" style="width: 100px;" /></a>
-      </li>
-      <li style="display: inline-block;">
-        <a href="https://facebook.com/imaizume" alt="Facebook" style="display: inline-block;"><img src="./img/facebook.png" style="width: 100px;" /></a>
-      </li>
-      <li style="display: inline-block;">
-        <a href="https://github.com/imaizume" alt="GitHub" style="display: inline-block;"><img src="./img/github.png" style="width: 100px;" /></a>
-      </li>
-    </ul>
-  </section>
+<body>
+  <div class=".container">
+
+    <section class="area">
+      <div style="width: 100%; text-align: center;">
+        <img src="./img/icon.png" alt="imaizume icon" class="header-icon">
+      </div>
+    </section>
+
+    <section class="area">
+      <div style="text-align: center;">
+        <h2 style="display: inline-block; margin: 0 auto;">Contact</h2>
+      </div>
+      <div>
+        <ul class="contact-list">
+          <li>
+            <a href="https://twitter.com/imaizume" class="circle" style="display: inline-block;">
+              <img src="./img/twitter.png" class="circle contact-icon" alt="Twitter" /></a>
+          </li>
+          <li>
+            <a href="https://facebook.com/imaizume" class="circle" style="display: inline-block;">
+              <img src="./img/facebook.png" class="circle contact-icon" alt="Facebook" /></a>
+          </li>
+          <li>
+            <a href="https://github.com/imaizume" class="circle" style="display: inline-block;">
+              <img src="./img/github.png" class="circle contact-icon" alt="GitHub" /></a>
+          </li>
+          <li>
+            <a href="https://blog.imaizue.me" class="circle" style="display: inline-block;">
+              <img src="./img/rss.png" class="circle contact-icon" alt="Blog" /></a>
+          </li>
+          <li>
+            <a href="https://qiita.com/imaizume" class="circle" style="display: inline-block;">
+              <img src="./img/qiita.png" class="circle contact-icon qiita" alt="Qiita" /></a>
+          </li>
+        </ul>
+      </div>
+    </section>
   </div>
 </body>
 </html>
