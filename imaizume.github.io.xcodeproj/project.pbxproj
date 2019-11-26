@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		17EF3B2E238D728A00FF0E10 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 17EF3B2D238D728A00FF0E10 /* SwiftLintFramework */; };
 		17EFF488238C24C700B878BA /* Html in Frameworks */ = {isa = PBXBuildFile; productRef = 17EFF487238C24C700B878BA /* Html */; };
 		OBJ_26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_33 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -63,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 0;
 			files = (
+				17EF3B2E238D728A00FF0E10 /* SwiftLintFramework in Frameworks */,
 				17EFF488238C24C700B878BA /* Html in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,7 +106,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -116,7 +118,6 @@
 				OBJ_19 /* CNAME */,
 				OBJ_20 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -157,6 +158,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = OBJ_22 /* Build configuration list for PBXNativeTarget "imaizume.github.io" */;
 			buildPhases = (
+				17EF3B2F238D72AB00FF0E10 /* ShellScript */,
 				OBJ_25 /* Sources */,
 				OBJ_27 /* Frameworks */,
 			);
@@ -167,6 +169,7 @@
 			name = imaizume.github.io;
 			packageProductDependencies = (
 				17EFF487238C24C700B878BA /* Html */,
+				17EF3B2D238D728A00FF0E10 /* SwiftLintFramework */,
 			);
 			productName = imaizume_github_io;
 			productReference = "imaizume.github.io::imaizume.github.io::Product" /* imaizume.github.io */;
@@ -205,9 +208,10 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			packageReferences = (
 				17EFF486238C24C700B878BA /* XCRemoteSwiftPackageReference "swift-html" */,
+				17EF3B2C238D728A00FF0E10 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
@@ -220,6 +224,26 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		17EF3B2F238D72AB00FF0E10 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint autocorrect --format\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		OBJ_25 /* Sources */ = {
@@ -512,6 +536,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		17EF3B2C238D728A00FF0E10 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.37.0;
+			};
+		};
 		17EFF486238C24C700B878BA /* XCRemoteSwiftPackageReference "swift-html" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-html.git";
@@ -523,6 +555,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		17EF3B2D238D728A00FF0E10 /* SwiftLintFramework */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 17EF3B2C238D728A00FF0E10 /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = SwiftLintFramework;
+		};
 		17EFF487238C24C700B878BA /* Html */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 17EFF486238C24C700B878BA /* XCRemoteSwiftPackageReference "swift-html" */;

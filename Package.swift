@@ -14,6 +14,6 @@ let package = Package(
             dependencies: ["Html"]),
         .testTarget(
             name: "imaizume.github.ioTests",
-            dependencies: ["imaizume.github.io"]),
+            dependencies: ["imaizume.github.io"])
     ]
 )
