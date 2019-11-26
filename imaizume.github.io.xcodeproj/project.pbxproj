@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		17EF3B2E238D728A00FF0E10 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 17EF3B2D238D728A00FF0E10 /* SwiftLintFramework */; };
+		17EF3B31238D7CC500FF0E10 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF3B30238D7CC500FF0E10 /* extensions.swift */; };
 		17EFF488238C24C700B878BA /* Html in Frameworks */ = {isa = PBXBuildFile; productRef = 17EFF487238C24C700B878BA /* Html */; };
 		OBJ_26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_33 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17EF3B30238D7CC500FF0E10 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		OBJ_12 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
 		OBJ_13 /* imaizume_github_ioTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imaizume_github_ioTests.swift; sourceTree = "<group>"; };
 		OBJ_17 /* img */ = {isa = PBXFileReference; lastKnownFileType = folder; path = img; sourceTree = SOURCE_ROOT; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_9 /* main.swift */,
+				17EF3B30238D7CC500FF0E10 /* extensions.swift */,
 			);
 			name = imaizume.github.io;
 			path = Sources/imaizume.github.io;
@@ -251,6 +254,7 @@
 			buildActionMask = 0;
 			files = (
 				OBJ_26 /* main.swift in Sources */,
+				17EF3B31238D7CC500FF0E10 /* extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
