@@ -58,7 +58,119 @@ box-sizing: border-box;
 }
 """
 
-let head: ChildOf = .head(
+let gaScript: StaticString = """
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-44092231-2');
+"""
+
+public struct Item {
+    let url: String
+    let date: String
+    let title: String
+}
+
+extension Item {
+    static var publishingList: Node {
+        let items: [Item] = [
+            .init(url: "http://bit.ly/2pZYEwm", date: "2019/09/07", title: "スナップショットテスト実戦投入 / Practical Snapshot Testing - iOSDC Japan 2019"),
+            .init(url: "http://bit.ly/2DsbEO9", date: "2019/07/17", title: "コーディング以外のエンジニアリング / About Engineering Without Coding - Matcing Dev Meetup #4"),
+            .init(url: "http://bit.ly/2Ys5UNv", date: "2019/06/18", title: "Firebase Remote Configの運用で知ったこと・知っておくと良いこと / Things I Learned from Operation of Firebase Remote Config - potatotips #62"),
+            .init(url: "http://bit.ly/2QovAat", date: "2019/04/16", title: "iOSアプリのテストを書きたいのに書けないあなたへ / How You Should Start to Write Your First Unit Test for iOS - iOS Test Night #10"),
+            .init(url: "http://bit.ly/2VYbtWL", date: "2019/04/10", title: "循環的複雑度を上げないためのSwiftプログラミングTips / Tips of Swift Programming to Reduce Code Complexity - Otemachi.swift #3"),
+            .init(url: "http://bit.ly/2K5rfrA", date: "2019/03/07", title: "シングルトンではじめる状態管理と依存注入 / A way to control state using singleton pattern - ROPPONGI.swift #7"),
+            .init(url: "http://bit.ly/2SKtZ2A", date: "2018/11/22", title: "『「改善Dayを作ろう!」って言ってたけど気づいたらなくなったよね…』を繰り返さないために - Diverse.tech #1"),
+            .init(url: "http://bit.ly/2SD90uT", date: "2018/11/05", title: "(再演)きれいなcommit, pull requestを知りたい/作りたい方のためのgit勉強会 - サポーターズCoLab"),
+            .init(url: "http://bit.ly/2MUGxyK", date: "2018/09/28", title: "チュートリアル実装の『そこどうしてる_』 Poiboyではこうしてる! - マッチングの裏側Night #1"),
+            .init(url: "http://bit.ly/2DpZwga", date: "2018/09/14", title: "(再演) detached HEADを理解して脱Git初心者を目指す方のためのGit入門勉強会 - サポーターズCoLab"),
+            .init(url: "http://bit.ly/2TEqI1H", date: "2018/08/24", title: "(ほぼ)標準ライブラリだけでスロットゲームを実装した話 - ROPPONGI.swift #5"),
+            .init(url: "http://bit.ly/2Do6mmt", date: "2018/02/24", title: "必要性の力を借りて良い学習をする - Unitus LT会"),
+            .init(url: "http://bit.ly/2UN7NlB", date: "2018/02/20", title: "新規サービスのアプリ開発で経験したリアルな出来事 - mixi GROUP Tech Meet ！")
+        ]
+        let publishings: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
+        return .ul(publishings[0],
+                   publishings[1],
+                   publishings[2],
+                   publishings[3],
+                   publishings[4],
+                   publishings[5],
+                   publishings[6],
+                   publishings[7],
+                   publishings[8],
+                   publishings[9],
+                   publishings[10],
+                   publishings[11],
+                   publishings[12])
+    }
+
+    static var activityList: Node {
+        let items: [Item] = [
+            .init(url: "http://bit.ly/307DxnY", date: "2019/07~", title: "ココナラ - ビデオ版: Gitの困り事解決いたします 勉強会講師の経験有り 使い方から運用まで何でもどうぞ!｜その他（IT・プログラミング）"),
+            .init(url: "http://bit.ly/2A3CJWN", date: "2018/11~", title: "ココナラ - テキスト版: Gitの困り事何でも解決いたします 勉強会講師の経験有り ❗使い方から運用まで何でもどうぞ ❗｜その他（IT・プログラミング）"),
+            .init(url: "http://bit.ly/2SiVXCZ", date: "2019/02", title: "6. 歴史あるサービスや文化との付き合い方（Diverse＝ダイバーシティって何？を掘り下げてみた） - Diverse Podcast"),
+            .init(url: "http://bit.ly/2Bp1X2w", date: "2018/08", title: "3. 「0→1」フェーズから「1→100」のフェーズに入ったサービスとの付き合い方（Poiboy iOSアプリの開発現場） - Diverse Podcast")
+        ]
+        let activities: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
+        return .ul(activities[0],
+                   activities[1],
+                   activities[2],
+                   activities[3])
+
+    }
+
+    static var workList: Node {
+        let items: [Item] = [
+            .init(url: "https://cocoapods.org/pods/Boonary", date: "2019/11", title: "Boonary: Simple extensions of conversion between Bool and Int values. - cocoapods.org"),
+            .init(url: "https://sukiyaki.imaasa.com/", date: "2015/09", title: "すき焼今朝 公式HP / Sukiyaki Imaasa Official Page")
+        ]
+        let works: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
+        return .ul(works[0],
+                   works[1])
+    }
+
+    static private func dataToNode(publishing: Item) -> ChildOf<Tag.Ul> {
+        return .li(.a(attributes: [.href(publishing.url)],
+                      .text(publishing.title)),
+                   .span("(\(publishing.date))"))
+    }
+}
+
+struct SocialItem {
+    let name: String
+    let url: String
+}
+
+extension SocialItem {
+    static var socialList: Node {
+        let items: [SocialItem] = [
+            .init(name: "Facebook", url: "https://facebook.com/imaizume/"),
+            .init(name: "Twitter", url: "https://twitter.com/imaizume/"),
+            .init(name: "Blog(JP)", url: "https://blog.imaizu.me/"),
+            .init(name: "Blog(EN)", url: "https://medium.com/@imaizume"),
+            .init(name: "Qiita", url: "https://qiita.com/imaizume/"),
+            .init(name: "GitHub", url: "https://github.com/imaizume/"),
+            .init(name: "Retty", url: "https://user.retty.me/1010703/")
+        ]
+        let socials: [ChildOf<Tag.Ul>] = items.map { dataToNode(social: $0) }
+        return .ul(attributes: [.class("contact-list")],
+                   socials[0],
+                   socials[1],
+                   socials[2],
+                   socials[3],
+                   socials[4],
+                   socials[5],
+                   socials[6])
+    }
+
+    static private func dataToNode(social: SocialItem) -> ChildOf<Tag.Ul> {
+        return .li(.a(attributes: [.href(social.url), .class("circle"), .style(safe: "display: inline-block;")],
+                      .img(src: "./img/\(social.name.lowercased()).png", alt: social.name, attributes: [.class("circle contact-icon")])))
+    }
+}
+
+let  head: ChildOf = .head(
     .title(title),
     .link(attributes: [.init("href", "https://fonts.googleapis.com/css?family=Noto+Sans+JP"), .init("rel", "stylesheet")]),
 
@@ -97,26 +209,69 @@ let body: ChildOf = .body(
          .section(attributes: [.class("area")],
                   .div(attributes: [.style(safe: "width: 100%; text-align: center;")],
                        .img(src: "./img/icon.png", alt: "imaizume icon", attributes: [.class("header-icon")]),
-                       .h1("imaizume")
-            ),
+                       .h1("imaizume")),
                   .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
-                       .ul(
-                        .li(
-                            .a(attributes: [.href("http://diverse-inc.co.jp/")],
-                               "Diverse.inc"),
-                            .span(attributes: [.style(safe: "margin-left: .5em;")], "(2017~)"),
-                            .ul(
-                                .li(
-                                    .a(attributes: [.init("href", "https://poiboy.jp/")],
-                                       "Poiboy iOS"),
-                                    .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer")
-                                )
-                            )
-                        )))
+                       .ul(.li(.a(attributes: [.href("https://corp.retty.me/")],
+                                  "Retty.inc"),
+                               .span(attributes: [.style(safe: "margin-left: .5em;")], "(2019/11~)"),
+                               .ul(.li(.a(attributes: [.href("https://user.retty.me/1010703/")],
+                                          "Retty"),
+                                       .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer")))),
+                           .li(.a(attributes: [.href("https://diverse-inc.co.jp/")],
+                                  "Diverse.inc"),
+                               .span(attributes: [.style(safe: "margin-left: .5em;")], "(2017/04~2019/10)"),
+                               .ul(.li(.a(attributes: [.href("https://poiboy.jp/")],
+                                          "Poiboy"),
+                                       .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer")),
+                                   .li(.a(attributes: [.href("https://developer.diverse-inc.com/search?q=imaizume")],
+                                          "Diverse Tech Blog"))
+                            )),
+                           .li(.a(attributes: [.href("https://mixi.co.jp/")],
+                                  "mixi.inc"),
+                               .span(attributes: [.style(safe: "margin-left: .5em;")], "(2015/08~2015/10)"),
+                               .ul(.li(.a(attributes: [.href("https://mitene.us/")],
+                                          "家族アルバム みてね"),
+                                       .span(attributes: [.style(safe: "margin-left: .5em;")], "Programmer Internship(2015)")))),
+                           .li("Small (self confessed) Web Company : Frontend Coder Internship (2014~2015)"),
+                           .li("Industorial Administration, Tokyo University of Science : Bachelor and Master Degree (2010~2017) ")
+                    )
+            )
 
         ),
-         .section(attributes: [.class("area")], "b")
-    )
+
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Socials")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       SocialItem.socialList)),
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Talks")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       Item.publishingList)),
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Activities")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       Item.activityList)),
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Works")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       Item.workList)),
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Achievements")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       .ul(.li(.text("Ruby技術者認定試験 Silver Version 2.1 (2016/12)"),
+                               .br,
+                               .img(src: "https://www.ruby.or.jp/assets/images/ja/certification/examination/logo_silver_v21.png", alt: "Ruby Silver Logo", attributes: []))))),
+         .footer(attributes: [.style(unsafe: "text-align: center;")],
+                 .small(.text("Copyright ©; 2010-2019 Tomohiro Imaizumi All Rights Reserved.")))
+
+    ),
+    .script(attributes: [.async(true), .src("https://www.googletagmanager.com/gtag/js?id=UA-44092231-2")]),
+    .script(safe: gaScript)
 )
 
 let document: Node = .document(
@@ -133,7 +288,7 @@ if #available(OSX 10.12, *) {
             .appendingPathComponent("github.com")
             .appendingPathComponent("imaizume")
             .appendingPathComponent("imaizume.github.io")
-            .appendingPathComponent("_index.html")
+            .appendingPathComponent("index.html")
 
         let text: String = render(document)
 
