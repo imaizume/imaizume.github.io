@@ -75,6 +75,7 @@ public struct Item {
 extension Item {
     static var publishingList: Node {
         let items: [Item] = [
+            .init(url: "http://bit.ly/2TyNHyh", date: "2020/01/07", title: "git branchを自由に操れるようになろう / Let's Play with Git branch!"),
             .init(url: "http://bit.ly/2pZYEwm", date: "2019/09/07", title: "スナップショットテスト実戦投入 / Practical Snapshot Testing - iOSDC Japan 2019"),
             .init(url: "http://bit.ly/2DsbEO9", date: "2019/07/17", title: "コーディング以外のエンジニアリング / About Engineering Without Coding - Matcing Dev Meetup #4"),
             .init(url: "http://bit.ly/2Ys5UNv", date: "2019/06/18", title: "Firebase Remote Configの運用で知ったこと・知っておくと良いこと / Things I Learned from Operation of Firebase Remote Config - potatotips #62"),
@@ -122,6 +123,7 @@ extension Item {
 
     static var workList: Node {
         let items: [Item] = [
+            .init(url: "https://twreenshot.com/", date: "2020/01", title: "Twreenshot"),
             .init(url: "https://cocoapods.org/pods/Boonary", date: "2019/11", title: "Boonary: Simple extensions of conversion between Bool and Int values. - cocoapods.org"),
             .init(url: "https://sukiyaki.imaasa.com/", date: "2015/09", title: "すき焼今朝 公式HP / Sukiyaki Imaasa Official Page")
         ]
