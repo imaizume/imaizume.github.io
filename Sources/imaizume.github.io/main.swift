@@ -274,6 +274,7 @@ let body: ChildOf = .body(
 
     ),
     .script(attributes: [.async(true), .src("https://www.googletagmanager.com/gtag/js?id=UA-44092231-2")]),
+    .script(attributes: [.dataAdClient("ca-pub-1404916629967149"), .async(true), .src("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js")]),
     .script(safe: gaScript)
 )
 
@@ -307,3 +308,12 @@ if #available(OSX 10.12, *) {
 }
 
 // Open in Xcode: https://www.raywenderlich.com/1993018-an-introduction-to-swift-package-manager
+
+extension Attribute where Element: HasSrc {
+    /// data-ad-client
+    ///
+    /// - Parameter value: id.
+    public static func dataAdClient(_ value: String) -> Attribute {
+        return .init("data-ad-client", value)
+    }
+}
