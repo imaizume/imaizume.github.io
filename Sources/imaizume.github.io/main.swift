@@ -258,11 +258,6 @@ let body: ChildOf = .body(
 
          .section(attributes: [.class("area")],
                   .div(attributes: [.style(safe: "text-align: center;")],
-                       .h2("Socials")),
-                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
-                       SocialItem.socialList)),
-         .section(attributes: [.class("area")],
-                  .div(attributes: [.style(safe: "text-align: center;")],
                        .h2("Talks")),
                   .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
                        Item.talks)),
@@ -288,6 +283,11 @@ let body: ChildOf = .body(
                        .ul(.li(.text("Ruby技術者認定試験 Silver Version 2.1 (2016/12)"),
                                .br,
                                .img(src: "https://www.ruby.or.jp/assets/images/ja/certification/examination/logo_silver_v21.png", alt: "Ruby Silver Logo", attributes: []))))),
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Socials")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       SocialItem.socialList)),
          .footer(attributes: [.style(unsafe: "text-align: center;")],
                  .small(.text("Copyright ©; 2010-2019 Tomohiro Imaizumi All Rights Reserved.")))
 
