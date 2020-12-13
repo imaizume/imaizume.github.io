@@ -1,5 +1,6 @@
 import Foundation
 import Html
+import SwiftDate
 
 let description: String = "A brief introduction about imaizume."
 let title: String = "imaizume"
@@ -203,6 +204,7 @@ let  head: ChildOf = .head(
     .meta(itemprop: "name", content: title),
     .meta(itemprop: "description", content: description),
     .meta(itemprop: "image", content: image),
+    .meta(itemprop: "date", content: today),
 
     // Facebook Meta Tags
     .meta(ogp: .facebook, property: "app_id", content: "236951083725770"),
@@ -220,13 +222,17 @@ let  head: ChildOf = .head(
     .style(safe: styles)
 )
 
+var today: String {
+    Date.init().toFormat("yyyy/MM/dd")
+}
+
 let body: ChildOf = .body(
     .div(attributes: [.class("container")],
          .section(attributes: [.class("area")],
                   .div(attributes: [.style(safe: "width: 100%; text-align: center;")],
                        .img(src: "./img/icon.png", alt: "imaizume icon", attributes: [.class("header-icon")]),
                        .h1("imaizume"),
-                       .p(.text("Last Update: "), .time("2019/11/28"))),
+                       .p(.text("Last Update: "), .time("\(today)"))),
                   .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
                        .ul(.li(.a(attributes: [.href("https://corp.retty.me/")],
                                   "Retty.inc"),
