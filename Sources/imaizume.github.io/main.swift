@@ -73,7 +73,7 @@ public struct Item {
 }
 
 extension Item {
-    static var publishingList: Node {
+    static var talks: Node {
         let items: [Item] = [
             .init(url: "http://bit.ly/2TyNHyh", date: "2020/01/07", title: "git branchを自由に操れるようになろう / Let's Play with Git branch!"),
             .init(url: "http://bit.ly/2pZYEwm", date: "2019/09/07", title: "スナップショットテスト実戦投入 / Practical Snapshot Testing - iOSDC Japan 2019"),
