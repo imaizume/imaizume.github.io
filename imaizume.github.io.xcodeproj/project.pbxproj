@@ -24,6 +24,7 @@
 		17EF3B2E238D728A00FF0E10 /* SwiftLintFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 17EF3B2D238D728A00FF0E10 /* SwiftLintFramework */; };
 		17EF3B31238D7CC500FF0E10 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF3B30238D7CC500FF0E10 /* extensions.swift */; };
 		17EFF488238C24C700B878BA /* Html in Frameworks */ = {isa = PBXBuildFile; productRef = 17EFF487238C24C700B878BA /* Html */; };
+		8A3D58032585E50100E95A54 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 8A3D58022585E50100E95A54 /* SwiftDate */; };
 		OBJ_26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* main.swift */; };
 		OBJ_33 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_44 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* XCTestManifests.swift */; };
@@ -68,6 +69,7 @@
 			files = (
 				17EF3B2E238D728A00FF0E10 /* SwiftLintFramework in Frameworks */,
 				17EFF488238C24C700B878BA /* Html in Frameworks */,
+				8A3D58032585E50100E95A54 /* SwiftDate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +175,7 @@
 			packageProductDependencies = (
 				17EFF487238C24C700B878BA /* Html */,
 				17EF3B2D238D728A00FF0E10 /* SwiftLintFramework */,
+				8A3D58022585E50100E95A54 /* SwiftDate */,
 			);
 			productName = imaizume_github_io;
 			productReference = "imaizume.github.io::imaizume.github.io::Product" /* imaizume.github.io */;
@@ -215,6 +218,7 @@
 			packageReferences = (
 				17EFF486238C24C700B878BA /* XCRemoteSwiftPackageReference "swift-html" */,
 				17EF3B2C238D728A00FF0E10 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				8A3D58012585E50100E95A54 /* XCRemoteSwiftPackageReference "SwiftDate" */,
 			);
 			productRefGroup = OBJ_14 /* Products */;
 			projectDirPath = "";
@@ -556,6 +560,14 @@
 				minimumVersion = 0.3.1;
 			};
 		};
+		8A3D58012585E50100E95A54 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -568,6 +580,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 17EFF486238C24C700B878BA /* XCRemoteSwiftPackageReference "swift-html" */;
 			productName = Html;
+		};
+		8A3D58022585E50100E95A54 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A3D58012585E50100E95A54 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
