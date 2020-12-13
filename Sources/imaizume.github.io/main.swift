@@ -118,7 +118,21 @@ extension Item {
                    activities[1],
                    activities[2],
                    activities[3])
+    }
 
+    static var blogPosts: Node {
+        let items: [Item] = [
+            .init(url: "https://developer.diverse-inc.com/search?q=imaizume", date: "~2019/09/17", title: "Diverse Tech Blog"),
+            .init(url: "https://engineer.retty.me/entry/2019/12/16/120000", date: "2019/12/16", title: "Xcode 11でビルドしたRetty iOSアプリの検索バーが突然反応しなくなった訳"),
+            .init(url: "https://engineer.retty.me/entry/2020/05/08/115500", date: "2020/05/08", title: "Slack Workflowで定形的な報告業務を効率化したのでRettyでのノウハウを公開します!"),
+            .init(url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12", title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して")
+        ]
+        let publishings: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
+        return .ul(publishings[0],
+                   publishings[1],
+                   publishings[2],
+                   publishings[3]
+        )
     }
 
     static var workList: Node {
@@ -228,7 +242,7 @@ let body: ChildOf = .body(
                                        .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer")),
                                    .li(.a(attributes: [.href("https://developer.diverse-inc.com/search?q=imaizume")],
                                           "Diverse Tech Blog"))
-                            )),
+                               )),
                            .li(.a(attributes: [.href("https://mixi.co.jp/")],
                                   "mixi.inc"),
                                .span(attributes: [.style(safe: "margin-left: .5em;")], "(2015/08~2015/10)"),
@@ -237,10 +251,10 @@ let body: ChildOf = .body(
                                        .span(attributes: [.style(safe: "margin-left: .5em;")], "Programmer Internship(2015)")))),
                            .li("Small (self confessed) Web Company : Frontend Coder Internship (2014~2015)"),
                            .li("Industorial Administration, Tokyo University of Science : Bachelor and Master Degree (2010~2017) ")
-                    )
-            )
+                       )
+                  )
 
-        ),
+         ),
 
          .section(attributes: [.class("area")],
                   .div(attributes: [.style(safe: "text-align: center;")],
@@ -251,12 +265,17 @@ let body: ChildOf = .body(
                   .div(attributes: [.style(safe: "text-align: center;")],
                        .h2("Talks")),
                   .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
-                       Item.publishingList)),
+                       Item.talks)),
          .section(attributes: [.class("area")],
                   .div(attributes: [.style(safe: "text-align: center;")],
                        .h2("Activities")),
                   .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
                        Item.activityList)),
+         .section(attributes: [.class("area")],
+                  .div(attributes: [.style(safe: "text-align: center;")],
+                       .h2("Posts")),
+                  .div(attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
+                       Item.blogPosts)),
          .section(attributes: [.class("area")],
                   .div(attributes: [.style(safe: "text-align: center;")],
                        .h2("Works")),
