@@ -163,9 +163,10 @@ extension SocialItem {
         let items: [SocialItem] = [
             .init(name: "Facebook", url: "https://facebook.com/imaizume/"),
             .init(name: "Twitter", url: "https://twitter.com/imaizume/"),
-            .init(name: "Blog(JP)", url: "https://blog.imaizu.me/"),
-            .init(name: "Blog(EN)", url: "https://medium.com/@imaizume"),
+            .init(name: "note", url: "https://note.com/imaizume"),
+            .init(name: "Blog", url: "https://blog.imaizu.me/"),
             .init(name: "Qiita", url: "https://qiita.com/imaizume/"),
+            .init(name: "Zenn", url: "https://zenn.dev/imaizume"),
             .init(name: "GitHub", url: "https://github.com/imaizume/"),
             .init(name: "Retty", url: "https://user.retty.me/1010703/")
         ]
@@ -309,7 +310,7 @@ let document: Node = .document(
 )
 
 if #available(OSX 10.12, *) {
-    if let homedir = FileManager.default.homeDirectory(forUser: "imaizume") {
+    if let homedir = FileManager.default.homeDirectory(forUser: "r0350") {
         let filePath = homedir
             .appendingPathComponent("go")
             .appendingPathComponent("src")
