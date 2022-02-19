@@ -34,6 +34,9 @@ display: inline-block;
 font-size: 2rem;
 margin: 0 auto;
 }
+a { color: #02a8f4 }
+a:visited { color: #b867c6 }
+a:hover { color: #33b490 }
 .header-icon {
 max-width: 200px;
 }
@@ -162,19 +165,12 @@ extension SocialItem {
             .init(name: "Retty", url: "https://user.retty.me/1010703/")
         ]
         let socials: [ChildOf<Tag.Ul>] = items.map { dataToNode(social: $0) }
-        return .ul(attributes: [.class("contact-list")],
-                   socials[0],
-                   socials[1],
-                   socials[2],
-                   socials[3],
-                   socials[4],
-                   socials[5],
-                   socials[6])
+        return .ul(attributes: [.class("contact-list")], .fragment(socials))
     }
 
     static private func dataToNode(social: SocialItem) -> ChildOf<Tag.Ul> {
-        return .li(.a(attributes: [.href(social.url), .class("circle"), .style(safe: "display: inline-block;")],
-                      .img(src: "./img/\(social.name.lowercased()).png", alt: social.name, attributes: [.class("circle contact-icon")])))
+        .li(.a(attributes: [.href(social.url), .class("circle"), .style(safe: "display: inline-block;")],
+            .img(src: "./img/\(social.name.lowercased()).png", alt: social.name, attributes: [.class("circle contact-icon")])))
     }
 }
 
