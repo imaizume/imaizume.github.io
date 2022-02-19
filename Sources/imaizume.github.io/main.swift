@@ -126,7 +126,9 @@ extension Item {
             .init(url: "https://developer.diverse-inc.com/search?q=imaizume", date: "~2019/09/17", title: "Diverse Tech Blog"),
             .init(url: "https://engineer.retty.me/entry/2019/12/16/120000", date: "2019/12/16", title: "Xcode 11でビルドしたRetty iOSアプリの検索バーが突然反応しなくなった訳"),
             .init(url: "https://engineer.retty.me/entry/2020/05/08/115500", date: "2020/05/08", title: "Slack Workflowで定形的な報告業務を効率化したのでRettyでのノウハウを公開します!"),
-            .init(url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12", title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して")
+            .init(url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12", title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して"),
+            .init(url: "https://engineer.retty.me/entry/2021/12/06/180000", date: "2021/12/06", title: "iOS 13と14をサポートするSwiftUIの実装でRettyアプリチームがハマったポイントまとめ"),
+            .init(url: "https://engineer.retty.me/entry/2021/12/14/180000", date: "2021/12/14", title: "Rettyアプリチームエンジニアはどんな一週間を過ごしているのか? スケジュールを紹介!"),
         ]
         let publishings: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
         return .ul(publishings[0],
