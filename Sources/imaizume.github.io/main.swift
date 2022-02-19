@@ -79,6 +79,7 @@ public struct Item {
 extension Item {
     static var talks: Node {
         let items: [Item] = [
+            .init(url: "https://retty.connpass.com/event/226111/", date: "2021/10/26", title: "スクラム開発におけるアプリチームの取り組み_Retty Beer Bash#5 - connpass"),
             .init(url: "http://bit.ly/2TyNHyh", date: "2020/01/07", title: "git branchを自由に操れるようになろう / Let's Play with Git branch!"),
             .init(url: "http://bit.ly/2pZYEwm", date: "2019/09/07", title: "スナップショットテスト実戦投入 / Practical Snapshot Testing - iOSDC Japan 2019"),
             .init(url: "http://bit.ly/2DsbEO9", date: "2019/07/17", title: "コーディング以外のエンジニアリング / About Engineering Without Coding - Matcing Dev Meetup #4"),
@@ -224,17 +225,17 @@ let body: ChildOf = .body(
                        .ul(.li(.a(attributes: [.href("https://corp.retty.me/")],
                                   "Retty.inc"),
                                .span(attributes: [.style(safe: "margin-left: .5em;")], "(2019/11~)"),
-                               .ul(.li(.a(attributes: [.href("https://user.retty.me/1010703/")],
-                                          "Retty"),
-                                       .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer")))),
+                               .ul(
+                                   .li(.span(attributes: [], "iOS / Android Programmer")),
+                                   .li(.span(attributes: [], "Scrum Master")),
+                                   .li(.span(attributes: [], "Recruiter"))
+                               )),
                            .li(.a(attributes: [.href("https://diverse-inc.co.jp/")],
                                   "Diverse.inc"),
                                .span(attributes: [.style(safe: "margin-left: .5em;")], "(2017/04~2019/10)"),
                                .ul(.li(.a(attributes: [.href("https://poiboy.jp/")],
                                           "Poiboy"),
-                                       .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer")),
-                                   .li(.a(attributes: [.href("https://developer.diverse-inc.com/search?q=imaizume")],
-                                          "Diverse Tech Blog"))
+                                       .span(attributes: [.style(safe: "margin-left: .5em;")], "iOS Programmer"))
                                )),
                            .li(.a(attributes: [.href("https://mixi.co.jp/")],
                                   "mixi.inc"),
