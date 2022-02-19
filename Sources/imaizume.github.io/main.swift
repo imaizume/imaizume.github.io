@@ -91,51 +91,39 @@ extension Item {
             .init(url: "http://bit.ly/2Do6mmt", date: "2018/02/24", title: "必要性の力を借りて良い学習をする - Unitus LT会"),
             .init(url: "http://bit.ly/2UN7NlB", date: "2018/02/20", title: "新規サービスのアプリ開発で経験したリアルな出来事 - mixi GROUP Tech Meet ！")
         ]
-        let publishings: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
-        return .ul(publishings[0],
-                   publishings[1],
-                   publishings[2],
-                   publishings[3],
-                   publishings[4],
-                   publishings[5],
-                   publishings[6],
-                   publishings[7],
-                   publishings[8],
-                   publishings[9],
-                   publishings[10],
-                   publishings[11],
-                   publishings[12])
+        let talks: [ChildOf<Tag.Ul>] = items
+                .sorted(by: { $0.date > $1.date })
+                .map { dataToNode(publishing: $0) }
+        return .ul(.fragment(talks))
     }
 
     static var activityList: Node {
         let items: [Item] = [
+            .init(url: "https://menta.work/plan/1549", date: "2022/01~", title: "【初心者_未経験者歓迎】使い方から運用までGit&GitHubの困りごと何でも解決します! 単発でのご相談から体系的学習や継続的なコーチングもOK! _ MENTA"),
             .init(url: "http://bit.ly/307DxnY", date: "2019/07~", title: "ココナラ - ビデオ版: Gitの困り事解決いたします 勉強会講師の経験有り 使い方から運用まで何でもどうぞ!｜その他（IT・プログラミング）"),
             .init(url: "http://bit.ly/2A3CJWN", date: "2018/11~", title: "ココナラ - テキスト版: Gitの困り事何でも解決いたします 勉強会講師の経験有り ❗使い方から運用まで何でもどうぞ ❗｜その他（IT・プログラミング）"),
             .init(url: "http://bit.ly/2SiVXCZ", date: "2019/02", title: "6. 歴史あるサービスや文化との付き合い方（Diverse＝ダイバーシティって何？を掘り下げてみた） - Diverse Podcast"),
             .init(url: "http://bit.ly/2Bp1X2w", date: "2018/08", title: "3. 「0→1」フェーズから「1→100」のフェーズに入ったサービスとの付き合い方（Poiboy iOSアプリの開発現場） - Diverse Podcast")
         ]
-        let activities: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
-        return .ul(activities[0],
-                   activities[1],
-                   activities[2],
-                   activities[3])
+        let activities: [ChildOf<Tag.Ul>] = items
+                .sorted(by: { $0.date > $1.date })
+                .map { dataToNode(publishing: $0) }
+        return .ul(.fragment(activities))
     }
 
     static var blogPosts: Node {
         let items: [Item] = [
-            .init(url: "https://developer.diverse-inc.com/search?q=imaizume", date: "~2019/09/17", title: "Diverse Tech Blog"),
+            .init(url: "https://developer.diverse-inc.com/search?q=imaizume", date: "2019/09/17", title: "Diverse Tech Blog"),
             .init(url: "https://engineer.retty.me/entry/2019/12/16/120000", date: "2019/12/16", title: "Xcode 11でビルドしたRetty iOSアプリの検索バーが突然反応しなくなった訳"),
             .init(url: "https://engineer.retty.me/entry/2020/05/08/115500", date: "2020/05/08", title: "Slack Workflowで定形的な報告業務を効率化したのでRettyでのノウハウを公開します!"),
             .init(url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12", title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して"),
             .init(url: "https://engineer.retty.me/entry/2021/12/06/180000", date: "2021/12/06", title: "iOS 13と14をサポートするSwiftUIの実装でRettyアプリチームがハマったポイントまとめ"),
             .init(url: "https://engineer.retty.me/entry/2021/12/14/180000", date: "2021/12/14", title: "Rettyアプリチームエンジニアはどんな一週間を過ごしているのか? スケジュールを紹介!"),
         ]
-        let publishings: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
-        return .ul(publishings[0],
-                   publishings[1],
-                   publishings[2],
-                   publishings[3]
-        )
+        let blogPosts: [ChildOf<Tag.Ul>] = items
+                .sorted(by: { $0.date > $1.date })
+                .map { dataToNode(publishing: $0) }
+        return .ul(.fragment(blogPosts))
     }
 
     static var workList: Node {
@@ -143,15 +131,16 @@ extension Item {
             .init(url: "https://cocoapods.org/pods/Boonary", date: "2019/11", title: "Boonary: Simple extensions of conversion between Bool and Int values. - cocoapods.org"),
             .init(url: "https://sukiyaki.imaasa.com/", date: "2015/09", title: "すき焼今朝 公式HP / Sukiyaki Imaasa Official Page")
         ]
-        let works: [ChildOf<Tag.Ul>] = items.map { dataToNode(publishing: $0) }
-        return .ul(works[0],
-                   works[1])
+        let works: [ChildOf<Tag.Ul>] = items
+                .sorted(by: { $0.date > $1.date })
+                .map { dataToNode(publishing: $0) }
+        return .ul(.fragment(works))
     }
 
     static private func dataToNode(publishing: Item) -> ChildOf<Tag.Ul> {
-        return .li(.a(attributes: [.href(publishing.url)],
-                      .text(publishing.title)),
-                   .span("(\(publishing.date))"))
+        .li(.a(attributes: [.href(publishing.url)],
+            .text(publishing.title)),
+            .span("(\(publishing.date))"))
     }
 }
 
