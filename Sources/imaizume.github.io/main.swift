@@ -309,23 +309,23 @@ let document: Node = .document(
     )
 )
 
-if let homedir = FileManager.default.homeDirectory(forUser: "r0350") {
-    let filePath = homedir
-            .appendingPathComponent("go")
-            .appendingPathComponent("src")
-            .appendingPathComponent("github.com")
-            .appendingPathComponent("imaizume")
-            .appendingPathComponent("imaizume.github.io")
-            .appendingPathComponent("index.html")
+let macOSUserName = "r0350"
+guard let homedir = FileManager.default.homeDirectory(forUser: macOSUserName) else { throw NSError() }
+let outputPath: String = render(document),
+    filePathComponent = [
+        "go",
+        "src",
+        "github.com",
+        "imaizume",
+        "imaizume.github.io",
+        "index.html",
+    ].reduce(homedir) { $0.appendingPathComponent($1) }
 
-    let text: String = render(document)
-
-    do {
-        print("testing")
-        try text.write(to: filePath, atomically: true, encoding: .utf8)
-    } catch {
-        print("error")
-    }
+do {
+    print("testing")
+    try outputPath.write(to: filePathComponent, atomically: true, encoding: .utf8)
+} catch {
+    print("error")
 }
 
 // Open in Xcode: https://www.raywenderlich.com/1993018-an-introduction-to-swift-package-manager
