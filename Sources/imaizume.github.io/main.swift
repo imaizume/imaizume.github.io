@@ -309,9 +309,8 @@ let document: Node = .document(
     )
 )
 
-if #available(OSX 10.12, *) {
-    if let homedir = FileManager.default.homeDirectory(forUser: "r0350") {
-        let filePath = homedir
+if let homedir = FileManager.default.homeDirectory(forUser: "r0350") {
+    let filePath = homedir
             .appendingPathComponent("go")
             .appendingPathComponent("src")
             .appendingPathComponent("github.com")
@@ -319,17 +318,14 @@ if #available(OSX 10.12, *) {
             .appendingPathComponent("imaizume.github.io")
             .appendingPathComponent("index.html")
 
-        let text: String = render(document)
+    let text: String = render(document)
 
-        do {
-            print("testing")
-            try text.write(to: filePath, atomically: true, encoding: .utf8)
-        } catch {
-            print("error")
-        }
+    do {
+        print("testing")
+        try text.write(to: filePath, atomically: true, encoding: .utf8)
+    } catch {
+        print("error")
     }
-} else {
-    // Fallback on earlier versions
 }
 
 // Open in Xcode: https://www.raywenderlich.com/1993018-an-introduction-to-swift-package-manager
