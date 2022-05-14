@@ -79,6 +79,7 @@ public struct Item {
 extension Item {
     static var talks: Node {
         let items: [Item] = [
+            .init(url: "https://speakerdeck.com/imaizume/achieve-product-growth-and-tech-update", date: "2022/05/13", title: "プロダクトグロースと技術のベースアップを両立させるRettyのアプリ開発スタイル / Achieve Product Growth and Tech Update - iOS Snack bar #1"),
             .init(url: "https://retty.connpass.com/event/226111/", date: "2021/10/26", title: "スクラム開発におけるアプリチームの取り組み_Retty Beer Bash#5 - connpass"),
             .init(url: "http://bit.ly/2TyNHyh", date: "2020/01/07", title: "git branchを自由に操れるようになろう / Let's Play with Git branch!"),
             .init(url: "http://bit.ly/2pZYEwm", date: "2019/09/07", title: "スナップショットテスト実戦投入 / Practical Snapshot Testing - iOSDC Japan 2019"),
@@ -122,7 +123,7 @@ extension Item {
             .init(url: "https://engineer.retty.me/entry/2020/05/08/115500", date: "2020/05/08", title: "Slack Workflowで定形的な報告業務を効率化したのでRettyでのノウハウを公開します!"),
             .init(url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12", title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して"),
             .init(url: "https://engineer.retty.me/entry/2021/12/06/180000", date: "2021/12/06", title: "iOS 13と14をサポートするSwiftUIの実装でRettyアプリチームがハマったポイントまとめ"),
-            .init(url: "https://engineer.retty.me/entry/2021/12/14/180000", date: "2021/12/14", title: "Rettyアプリチームエンジニアはどんな一週間を過ごしているのか? スケジュールを紹介!"),
+            .init(url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15", title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果"),
         ]
         let blogPosts: [ChildOf<Tag.Ul>] = items
                 .sorted(by: { $0.date > $1.date })
@@ -297,8 +298,8 @@ let document: Node = .document(
     )
 )
 
-let macOSUserName = "r0350"
-guard let homedir = FileManager.default.homeDirectory(forUser: macOSUserName) else { throw NSError() }
+
+let homedir: URL = FileManager.default.homeDirectoryForCurrentUser
 let outputPath: String = render(document),
     filePathComponent = [
         "go",
@@ -323,6 +324,6 @@ extension Attribute where Element: HasSrc {
     ///
     /// - Parameter value: id.
     public static func dataAdClient(_ value: String) -> Attribute {
-        return .init("data-ad-client", value)
+        .init("data-ad-client", value)
     }
 }
