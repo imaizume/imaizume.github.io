@@ -298,10 +298,10 @@ let document: Node = .document(
     )
 )
 
-
-let homedir: URL = FileManager.default.homeDirectoryForCurrentUser
-let outputPath: String = render(document),
-    filePathComponent = [
+if #available(macOS 12.3, *) { // Unable to detect current OS version properly in AppCode when use newer Swift API
+    let homedir: URL = FileManager.default.homeDirectoryForCurrentUser
+    let outputPath: String = render(document),
+        filePathComponent = [
         "go",
         "src",
         "github.com",
@@ -310,11 +310,12 @@ let outputPath: String = render(document),
         "index.html",
     ].reduce(homedir) { $0.appendingPathComponent($1) }
 
-do {
-    print("testing")
-    try outputPath.write(to: filePathComponent, atomically: true, encoding: .utf8)
-} catch {
-    print("error")
+    do {
+        print("testing")
+        try outputPath.write(to: filePathComponent, atomically: true, encoding: .utf8)
+    } catch {
+        print("error")
+    }
 }
 
 // Open in Xcode: https://www.raywenderlich.com/1993018-an-introduction-to-swift-package-manager
