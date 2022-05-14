@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Html",
+        "package": "swift-html",
         "repositoryURL": "https://github.com/pointfreeco/swift-html.git",
         "state": {
           "branch": null,
-          "revision": "3ffc3fc8feb5fde766f5f44fd06ebc030f0721f3",
-          "version": "0.3.1"
+          "revision": "f53c38c4b841841f36afa1866093c908cadaa736",
+          "version": "0.4.0"
         }
       },
       {
@@ -15,8 +15,17 @@
         "repositoryURL": "https://github.com/pointfreeco/swift-snapshot-testing.git",
         "state": {
           "branch": null,
-          "revision": "35aac0fbc74cdb0848923d42ddbdd3400c938f72",
-          "version": "1.6.0"
+          "revision": "f8a9c997c3c1dab4e216a8ec9014e23144cbab37",
+          "version": "1.9.0"
+        }
+      },
+      {
+        "package": "SwiftDate",
+        "repositoryURL": "https://github.com/malcommac/SwiftDate.git",
+        "state": {
+          "branch": null,
+          "revision": "6190d0cefff3013e77ed567e6b074f324e5c5bf5",
+          "version": "6.3.1"
         }
       }
     ]
