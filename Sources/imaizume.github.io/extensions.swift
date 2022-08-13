@@ -29,10 +29,14 @@ extension ChildOf where Element == Tag.Head {
 
     public static func meta(robots: [String]) -> ChildOf {
         let sanitizedRobots = robots.map { $0.replacingOccurrences(of: ",", with: "&#44;") }
-        return meta(attributes: [.init("name", "robots"), .content(sanitizedRobots.joined(separator: ","))])
+        return meta(attributes: [
+            .init("name", "robots"), .content(sanitizedRobots.joined(separator: ",")),
+        ])
     }
 
     public static func meta(revisitAfterDays: Int) -> ChildOf {
-        return meta(attributes: [.init("name", "revisit-after"), .content("\(revisitAfterDays) days")])
+        return meta(attributes: [
+            .init("name", "revisit-after"), .content("\(revisitAfterDays) days"),
+        ])
     }
 }
