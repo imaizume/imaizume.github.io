@@ -243,13 +243,12 @@ extension BlogItem {
                 suffix: rettyTechBlogSuffix
             ),
             .init(
-                url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
-                title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果",
-                suffix: rettyTechBlogSuffix
+            url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
+            title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果",
+            suffix: rettyTechBlogSuffix
             ),
         ]
-        let blogPosts: [ChildOf<Tag.Ul>] =
-            rettyTechBlogEntries
+        let blogPosts: [ChildOf<Tag.Ul>] = ( rettyTechBlogEntries + diverseTechBlogEntries )
             .sorted(by: { $0.date > $1.date })
             .map { dataToNode(publishing: $0) }
         return .ul(.fragment(blogPosts))
@@ -494,7 +493,7 @@ if #available(macOS 12.3, *) {  // Unable to detect current OS version properly 
     ].reduce(homedir) { $0.appendingPathComponent($1) }
 
     do {
-        print("testing")
+        print("Updated index.html")
         try outputPath.write(to: filePathComponent, atomically: true, encoding: .utf8)
     } catch {
         print("error")
