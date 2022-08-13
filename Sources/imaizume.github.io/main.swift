@@ -177,34 +177,6 @@ extension Item {
         return .ul(.fragment(activities))
     }
 
-    static var blogPosts: Node {
-        let items: [Item] = [
-            .init(
-                url: "https://developer.diverse-inc.com/search?q=imaizume", date: "2019/09/17",
-                title: "Diverse Tech Blog"),
-            .init(
-                url: "https://engineer.retty.me/entry/2019/12/16/120000", date: "2019/12/16",
-                title: "Xcode 11でビルドしたRetty iOSアプリの検索バーが突然反応しなくなった訳"),
-            .init(
-                url: "https://engineer.retty.me/entry/2020/05/08/115500", date: "2020/05/08",
-                title: "Slack Workflowで定形的な報告業務を効率化したのでRettyでのノウハウを公開します!"),
-            .init(
-                url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12",
-                title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して"),
-            .init(
-                url: "https://engineer.retty.me/entry/2021/12/06/180000", date: "2021/12/06",
-                title: "iOS 13と14をサポートするSwiftUIの実装でRettyアプリチームがハマったポイントまとめ"),
-            .init(
-                url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
-                title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果"),
-        ]
-        let blogPosts: [ChildOf<Tag.Ul>] =
-            items
-            .sorted(by: { $0.date > $1.date })
-            .map { dataToNode(publishing: $0) }
-        return .ul(.fragment(blogPosts))
-    }
-
     static var workList: Node {
         let items: [Item] = [
             .init(
@@ -228,6 +200,66 @@ extension Item {
             .a(
                 attributes: [.href(publishing.url)],
                 .text(publishing.title)),
+            .span("(\(publishing.date))"))
+    }
+}
+
+public struct BlogItem {
+    let url: String
+    let date: String
+    let title: String
+    let suffix: String
+}
+
+extension BlogItem {
+    static var blogPosts: Node {
+        let diverseTechBlogEntries: [BlogItem] = [
+            .init(
+                url: "https://developer.diverse-inc.com/search?q=imaizume", date: "2019/09/17",
+                title: "過去記事",
+                suffix: "Diverse Tech Blog"
+            )
+        ]
+        let rettyTechBlogSuffix: String = "Retty Tech Blog"
+        let rettyTechBlogEntries: [BlogItem] = [
+            .init(
+                url: "https://engineer.retty.me/entry/2019/12/16/120000", date: "2019/12/16",
+                title: "Xcode 11でビルドしたRetty iOSアプリの検索バーが突然反応しなくなった訳",
+                suffix: rettyTechBlogSuffix
+            ),
+            .init(
+                url: "https://engineer.retty.me/entry/2020/05/08/115500", date: "2020/05/08",
+                title: "Slack Workflowで定形的な報告業務を効率化したのでRettyでのノウハウを公開します!",
+                suffix: rettyTechBlogSuffix
+            ),
+            .init(
+                url: "https://engineer.retty.me/entry/2020/12/12/090000", date: "2020/12/12",
+                title: "開発組織としてのRettyアプリチーム紹介と2020年振り返り - LeSSとリモート勤務の元でのより良い開発体制を目指して",
+                suffix: rettyTechBlogSuffix
+            ),
+            .init(
+                url: "https://engineer.retty.me/entry/2021/12/06/180000", date: "2021/12/06",
+                title: "iOS 13と14をサポートするSwiftUIの実装でRettyアプリチームがハマったポイントまとめ",
+                suffix: rettyTechBlogSuffix
+            ),
+            .init(
+                url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
+                title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果",
+                suffix: rettyTechBlogSuffix
+            ),
+        ]
+        let blogPosts: [ChildOf<Tag.Ul>] =
+            rettyTechBlogEntries
+            .sorted(by: { $0.date > $1.date })
+            .map { dataToNode(publishing: $0) }
+        return .ul(.fragment(blogPosts))
+    }
+
+    static private func dataToNode(publishing: BlogItem) -> ChildOf<Tag.Ul> {
+        .li(
+            .a(
+                attributes: [.href(publishing.url)],
+                .text("\(publishing.title) - \(publishing.suffix)")),
             .span("(\(publishing.date))"))
     }
 }
@@ -395,7 +427,7 @@ let body: ChildOf = .body(
                 .h2("Posts")),
             .div(
                 attributes: [.style(safe: "width: 80%; margin: 0 auto;")],
-                Item.blogPosts)),
+                BlogItem.blogPosts)),
         .section(
             attributes: [.class("area")],
             .div(
