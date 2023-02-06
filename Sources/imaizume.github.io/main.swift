@@ -63,11 +63,10 @@ let styles: StaticString = """
     """
 
 let gaScript: StaticString = """
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-44092231-2');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-T76ETZ5F27');
     """
 
 public struct Item {
@@ -243,12 +242,12 @@ extension BlogItem {
                 suffix: rettyTechBlogSuffix
             ),
             .init(
-            url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
-            title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果",
-            suffix: rettyTechBlogSuffix
+                url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
+                title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果",
+                suffix: rettyTechBlogSuffix
             ),
         ]
-        let blogPosts: [ChildOf<Tag.Ul>] = ( rettyTechBlogEntries + diverseTechBlogEntries )
+        let blogPosts: [ChildOf<Tag.Ul>] = (rettyTechBlogEntries + diverseTechBlogEntries)
             .sorted(by: { $0.date > $1.date })
             .map { dataToNode(publishing: $0) }
         return .ul(.fragment(blogPosts))
@@ -464,7 +463,7 @@ let body: ChildOf = .body(
 
     ),
     .script(attributes: [
-        .async(true), .src("https://www.googletagmanager.com/gtag/js?id=UA-44092231-2"),
+        .async(true), .src("https://www.googletagmanager.com/gtag/js?id=G-T76ETZ5F27"),
     ]),
     .script(attributes: [
         .dataAdClient("ca-pub-1404916629967149"), .async(true),
