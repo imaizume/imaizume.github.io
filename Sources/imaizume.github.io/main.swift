@@ -179,6 +179,12 @@ extension Item {
     static var workList: Node {
         let items: [Item] = [
             .init(
+                url: "https://github.com/imaizume/url-encode-decode-alfred-workflow",
+                date: "2022/12/10",
+                title:
+                    "Alfred Workflow for URL Encode / Decode"
+            ),
+            .init(
                 url: "https://cocoapods.org/pods/Boonary", date: "2019/11",
                 title:
                     "Boonary: Simple extensions of conversion between Bool and Int values. - cocoapods.org"
@@ -244,6 +250,11 @@ extension BlogItem {
             .init(
                 url: "https://engineer.retty.me/entry/2022/04/15/120000", date: "2022/04/15",
                 title: "ブランチ追従コストが大幅DOWN! RettyアプリチームがFeature Branchを捨てFeature Flagでの開発へ移行した理由と成果",
+                suffix: rettyTechBlogSuffix
+            ),
+            .init(
+                url: "https://engineer.retty.me/entry/2022/12/01/090000", date: "2022/12/01",
+                title: "2年間の運用実績から学んだ! Retty流Slack Workflow活用術と使い方の勘所!",
                 suffix: rettyTechBlogSuffix
             ),
         ]
