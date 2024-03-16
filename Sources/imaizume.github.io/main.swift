@@ -257,6 +257,16 @@ extension BlogItem {
                 title: "2年間の運用実績から学んだ! Retty流Slack Workflow活用術と使い方の勘所!",
                 suffix: rettyTechBlogSuffix
             ),
+            .init(
+                url: "https://engineer.retty.me/entry/2023/12/14/173000", date: "2023/12/14",
+                title: "日本全国で自社のサービスをドッグフーディングしてみて",
+                suffix: rettyTechBlogSuffix
+            ),
+            .init(
+                url: "https://engineer.retty.me/entry/2024/01/23/120000", date: "2024/01/23",
+                title: "アプリ開発メインの私が業務で擦れるほど使い倒しているGit/GitHub CLIの便利コマンド4つ",
+                suffix: rettyTechBlogSuffix
+            ),
         ]
         let blogPosts: [ChildOf<Tag.Ul>] = (rettyTechBlogEntries + diverseTechBlogEntries)
             .sorted(by: { $0.date > $1.date })
